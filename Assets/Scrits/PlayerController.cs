@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetButtonDown("Horizontal"))
         {
@@ -25,7 +25,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Vertical"))
         {
             MoveVertical();
-        }
+        }                           
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     private void MoveHorizontal()
@@ -41,8 +46,20 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Debug.Log("hello" + collision.name);
+
         transform.position = collision.transform.position;
         rb.velocity = Vector2.zero;
+        collision.GetComponent<CellScript>().ChangeMyObject(this.gameObject);
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+       // rb.AddForce((collision.transform.position - transform.position) * Speed);
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        collision.GetComponent<CellScript>().ChangeMyObject(null);
     }
 }
