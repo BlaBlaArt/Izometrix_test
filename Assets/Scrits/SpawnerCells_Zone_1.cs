@@ -10,8 +10,48 @@ public class SpawnerCells_Zone_1 : MonoBehaviour
     GameObject GameController;
 
     public GameObject ZonePref;
+    [SerializeField] int row;
 
-    public int rowZone_0_door, collumnZone_0_door;
+    public int rowZone_0_door
+    {
+        set
+        {
+            row = value;
+            if (row == 19)
+            {
+                row = 0;
+            }
+            else if (row == 0)
+            {
+                row = 19;
+            }
+        }
+        get
+        {
+            return row;
+        }
+    }
+    [SerializeField] int col;
+
+    public int collumnZone_0_door
+    {
+        set
+        {
+            col = value;
+            if (col == 19)
+            {
+                col = 0;
+            }
+            else if (col == 0)
+            {
+                col = 19;
+            }
+        }
+        get
+        {
+            return col;
+        }
+    }
 
     public int countZone = 0;
 
@@ -25,26 +65,7 @@ public class SpawnerCells_Zone_1 : MonoBehaviour
 
         SpawnCells();
 
-        //List<GameObject> cellsDoors = GameController.GetComponent<GameController>().CellCorridor_zone0;
-        /*
-        for (int i = 0; i <= cellsDoors.Count; i++)
-        {
-            if (i == 0)
-            {
-                rowZone_0_Door_1 = cellsDoors[i].GetComponent<CellScript>().MyRow;
-                collumnZone_0_Door_1 = cellsDoors[i].GetComponent<CellScript>().MyCollumn;
-                // Debug.Log("Gotcha_1"  + " " +  rowZone_0_Door_1 + " " + collumnZone_0_Door_1);
-                //  Debug.Log("" +  GameController.GetComponent<GameController>().Cells_zone_1[19, collumnZone_0_Door_1].name);
-            }
-            else if (i == 1)
-            {
 
-                rowZone_0_Door_2 = cellsDoors[i].GetComponent<CellScript>().MyRow;
-                collumnZone_0_Door_2 = cellsDoors[i].GetComponent<CellScript>().MyCollumn;
-                //  Debug.Log("Gotcha_2" + " " + rowZone_0_Door_2 + " " + collumnZone_0_Door_2);
-            }
-        }
-        */
         StartCoroutine("SpawnDoors_zone_1");
     }
 
@@ -101,102 +122,18 @@ public class SpawnerCells_Zone_1 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        Debug.Log("start");
 
-        if(rowZone_0_door == 19)
+        if(countZone == 0)
         {
-
-        }
-        if (rowZone_0_door == 0)
-        {
-
-        }
-        if (collumnZone_0_door == 19)
-        {
-
-        }
-        if (collumnZone_0_door == 0)
-        {
-
+            GameController.GetComponent<GameController>().Cells_zone_1_0[rowZone_0_door, collumnZone_0_door].
+                GetComponent<CellScript>().SetCollor(CellScript.Collors.none);
         }
 
-        /*
-                if (ZoneUp)
-                {
-                    Debug.Log("YES");
-
-                    if (rowZone_0_Door_1 == 0)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[0, collumnZone_0_Door_1].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                    if (rowZone_0_Door_2 == 0)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[0, collumnZone_0_Door_2].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                }
-                else if (ZoneDown)
-                {
-                    Debug.Log("YES");
-
-                    if (rowZone_0_Door_1 == 19)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[19, collumnZone_0_Door_1].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-                    }
-                    if (rowZone_0_Door_2 == 19)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[19, collumnZone_0_Door_2].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                }
-                else if (ZoneRight)
-                {
-                    Debug.Log("YES");
-
-                    if (collumnZone_0_Door_1 == 0)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[rowZone_0_Door_1, 0].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                    if (collumnZone_0_Door_2 == 0)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[rowZone_0_Door_2, 0].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                }
-                else if (ZoneLeft)
-                {
-                    Debug.Log("YES");
-
-                    if (collumnZone_0_Door_1 == 19)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[rowZone_0_Door_1, 19].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                    if (collumnZone_0_Door_2 == 19)
-                    {
-                        GameController.GetComponent<GameController>().Cells_zone_1[rowZone_0_Door_2, 19].GetComponent<CellScript>()
-                            .SetCollor(CellScript.Collors.none);
-                        Debug.Log("YES");
-
-                    }
-                }
-                */
+        if (countZone == 1)
+        {
+            GameController.GetComponent<GameController>().Cells_zone_1_1[rowZone_0_door, collumnZone_0_door].
+    GetComponent<CellScript>().SetCollor(CellScript.Collors.none);
+        }
     }
 
     

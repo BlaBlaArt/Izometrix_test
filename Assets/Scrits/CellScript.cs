@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CellScript : MonoBehaviour
 {
-    // 0 = nothing, 1 = wall
-    int myStat = 0;
+    // 1 = nothing, 2 = wall, 3 = enemy
+    public int myStat = 0;
 
     public int MyRow;
     public int MyCollumn;
@@ -17,10 +17,12 @@ public class CellScript : MonoBehaviour
 
     public Color Wall;
     public Color None;
+    public Color Enemy;
     public enum Collors
     {
         wall = 1,
-        none
+        none,
+        enemy
     }
 
     private void Start()
@@ -49,6 +51,15 @@ public class CellScript : MonoBehaviour
 
                     break;
                 }
+
+            case Collors.enemy:
+                {
+                    GetComponent<Image>().color = Enemy;
+                    myStat = (int)col;
+                    IsTriggerCheck(myStat);
+
+                    break;
+                }
         }
     }
 
@@ -66,6 +77,14 @@ public class CellScript : MonoBehaviour
             case 2:
                 {
                     myCol.isTrigger = true;
+
+                    break;
+                }
+
+            case 3:
+                {
+                    if(myCol != null)
+                        myCol.isTrigger = true;
 
                     break;
                 }

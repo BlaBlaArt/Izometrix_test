@@ -25,5 +25,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    public static void TurnBattle()
+    {
+        CameraControllerScript.checkPlayer = false;
+    }
 }

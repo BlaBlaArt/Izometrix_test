@@ -16,8 +16,6 @@ public class SpawnerCellsScript_Zone_0 : MonoBehaviour
 
     public GameObject ZonePref;
 
-    //  public Color zone_0col ,zone_1col, zone_2col;
-
     public bool ZoneUp, ZoneDown, ZoneRight, ZoneLeft;
 
     void Start()
@@ -27,6 +25,8 @@ public class SpawnerCellsScript_Zone_0 : MonoBehaviour
       //  CheckZone();
 
         SpawnCells();
+
+        SpawnEnemyZone();
 
         StartCoroutine("SpawnDoors_zone_0");
 
@@ -70,6 +70,15 @@ public class SpawnerCellsScript_Zone_0 : MonoBehaviour
                 count++;
             }
         }
+    }
+
+    private void SpawnEnemyZone()
+    {
+        int randomRow = Random.Range(1, 18);
+        int randomColumn = Random.Range(1, 18);
+
+        GameController.GetComponent<GameController>().Cells_zone_0[randomRow, randomColumn].
+            GetComponent<CellScript>().SetCollor(CellScript.Collors.enemy);
     }
 
     IEnumerator SpawnDoors_zone_0()
@@ -202,24 +211,6 @@ GetComponent<CellScript>().SetCollor(CellScript.Collors.none);
 
     }
 
- /*   private void CheckZone()
-    {
-        if (GetComponentInParent<Canvas>().name == "Zone_0")
-        {
-            Debug.Log("zone0");
-            GetComponent<Image>().color = zone_0col;
-            isZone_0 = true;
-            isZone_1 = false;
-        }
-
-        if (GetComponentInParent<Canvas>().name == "Zone_1")
-        {
-            GetComponent<Image>().color = zone_1col;
-            isZone_0 = false;
-            isZone_1 = true;
-        }
-    }*/
-
     IEnumerator SpawnPlayer(GameObject tmpcell)
     {
         yield return new WaitForSeconds(0.5f);
@@ -229,7 +220,7 @@ GetComponent<CellScript>().SetCollor(CellScript.Collors.none);
         Camera.main.GetComponent<CameraControllerScript>().PlayerSpawn();
     }
 
-    IEnumerator SpawnZones(/*GameObject tmpZone*/)
+    IEnumerator SpawnZones()
     {
         yield return new WaitForSeconds(0.6f);
 

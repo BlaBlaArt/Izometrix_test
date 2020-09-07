@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float Speed = 1;
+    public GameObject BattlseScene;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
+        BattlseScene = GameObject.FindGameObjectWithTag("BattleScene");
     }
 
     private void Update()
@@ -50,6 +52,13 @@ public class PlayerController : MonoBehaviour
         transform.position = collision.transform.position;
         rb.velocity = Vector2.zero;
         collision.GetComponent<CellScript>().ChangeMyObject(this.gameObject);
+
+        if(collision.GetComponent<CellScript>().myStat == 3)
+        {
+            Debug.Log("enemy");
+            GameController.TurnBattle();
+            Camera.main.transform.position = new Vector3( BattlseScene.transform.position.x , BattlseScene.transform.position.y, Camera.main.transform.position.z);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
