@@ -9,6 +9,7 @@ public class AttackCardsConstruktor : MonoBehaviour
 
     public Text AttackDamageText, StaminaText, CartText, CoolDownText;
 
+    bool ismouseDown = false;
 
     int atk;
    public int AttackDamage
@@ -54,6 +55,27 @@ public class AttackCardsConstruktor : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("boom");
+        StartCoroutine("MouseCheck");
+    }
+
+    IEnumerator MouseCheck()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (!ismouseDown)
+        {
+            Debug.Log("BOOM");
+        }
+    }
+
+    private void OnMouseDrag()
+    {
+        //Debug.Log("drag");
+        ismouseDown = true;
+    }
+
+    private void OnMouseUp()
+    {
+        Debug.Log("Up");
+        ismouseDown = false;
     }
 }
