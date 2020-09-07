@@ -31,11 +31,16 @@ public class ButtonSettingsBattleSceneScript : MonoBehaviour
 
     public void SpawnCards()
     {
-        //AttackCardsConstruktor atackCard = new AttackCardsConstruktor();
-        Image tmpCart = Instantiate<Image>(CardsPref);
-        tmpCart.transform.SetParent(ViewPortBattle.transform);
-        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().AttackDamage = 2;
-        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().StaminaNeeds = 2;
-        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().TimeCoolDown = 2;
+        foreach(GameObject card in GameController.PlayerCards)
+        {
+            Image tmpCart = Instantiate<Image>(CardsPref);
+            tmpCart.transform.SetParent(ViewPortBattle.transform);
+            tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().AttackDamage = card.GetComponent<AttackCardScript>().AttackDamage;
+            tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().StaminaNeeds = card.GetComponent<AttackCardScript>().StaminaNeed;
+            tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().TimeCoolDown = card.GetComponent<AttackCardScript>().CoolDown;
+            tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().CartText.text = card.GetComponent<AttackCardScript>().AttackText;
+            
+
+        }
     }
 }

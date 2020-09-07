@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
 
     public GameObject[,] Cells_zone_1_1 = new GameObject[20, 20];
 
-
+    public static List<GameObject> PlayerCards = new List<GameObject>();
 
 
     private void Update()

@@ -2426,9 +2426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa7e7d8d4ffdb949a0d486653ae6d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 0
-  TimeCoolDown: 0
-  StaminaNeeds: 0
   CartPref: {fileID: 0}
   AttackImage: {fileID: 0}
   AttackDamageText: {fileID: 0}

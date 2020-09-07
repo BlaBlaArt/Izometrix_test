@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         tmpAttack.GetComponent<AttackCardScript>().StaminaNeed = staminaNeed;
         tmpAttack.GetComponent<AttackCardScript>().CoolDown = coolDown;
         tmpAttack.GetComponent<AttackCardScript>().AttackText = textAttack;
+        GameController.PlayerCards.Add(tmpAttack);
     }
 
     private void MoveHorizontal()
