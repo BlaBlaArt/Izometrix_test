@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class BattleControler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject Enemy;
+
+    public bool PlayerTurn = true;
+
+    public void Turn()
     {
-        
+
     }
 }

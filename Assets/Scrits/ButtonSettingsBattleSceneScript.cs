@@ -1,11 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSettingsBattleSceneScript : MonoBehaviour
 {
     public Canvas MainScene;
     public Canvas AttackScene;
+
+    public Image CardsPref;
+    public CanvasRenderer ViewPortBattle;
+
+    private void Start()
+    {
+        ViewPortBattle = GameObject.FindGameObjectWithTag("ViewPortAttack").GetComponent<CanvasRenderer>();
+
+    }
 
     public void AttackEnabled()
     {
@@ -17,5 +27,11 @@ public class ButtonSettingsBattleSceneScript : MonoBehaviour
     {
         MainScene.enabled = true;
         AttackScene.enabled = false;
+    }
+
+    public void SpawnCards()
+    {
+        Image tmpCart = Instantiate<Image>(CardsPref);
+        tmpCart.transform.SetParent(ViewPortBattle.transform);
     }
 }
