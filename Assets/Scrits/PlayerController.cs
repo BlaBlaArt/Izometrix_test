@@ -8,13 +8,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public float Speed = 1;
     public GameObject BattlseScene;
+    public GameObject AttackPref;
+    public GameObject AttacksPlayer;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
+        AttacksPlayer = GameObject.FindGameObjectWithTag("AttacksPlayer");
+
         BattlseScene = GameObject.FindGameObjectWithTag("BattleScene");
+
+        InstantiateAttack(2, 1, 0, "ClassickAttack", "Classica");
     }
 
     private void Update()
@@ -33,6 +39,19 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
+    }
+
+
+    public void InstantiateAttack(int attackDamage, int staminaNeed, int coolDown, string nameAttack, string textAttack/* Image imageAttack*/)
+    {
+        GameObject tmpAttack = Instantiate<GameObject>(AttackPref);
+        tmpAttack.transform.SetParent(AttacksPlayer.transform);
+        tmpAttack.name = nameAttack;
+
+        tmpAttack.GetComponent<AttackCardScript>().AttackDamage = attackDamage;
+        tmpAttack.GetComponent<AttackCardScript>().StaminaNeed = staminaNeed;
+        tmpAttack.GetComponent<AttackCardScript>().CoolDown = coolDown;
+        tmpAttack.GetComponent<AttackCardScript>().AttackText = textAttack;
     }
 
     private void MoveHorizontal()

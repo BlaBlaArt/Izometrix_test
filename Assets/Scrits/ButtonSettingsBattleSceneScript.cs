@@ -31,7 +31,11 @@ public class ButtonSettingsBattleSceneScript : MonoBehaviour
 
     public void SpawnCards()
     {
+        //AttackCardsConstruktor atackCard = new AttackCardsConstruktor();
         Image tmpCart = Instantiate<Image>(CardsPref);
         tmpCart.transform.SetParent(ViewPortBattle.transform);
+        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().AttackDamage = 2;
+        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().StaminaNeeds = 2;
+        tmpCart.gameObject.GetComponent<AttackCardsConstruktor>().TimeCoolDown = 2;
     }
 }

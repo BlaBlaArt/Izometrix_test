@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 1767711818007298534}
   - component: {fileID: 1767711818007298533}
   - component: {fileID: 1098117249514400377}
+  - component: {fileID: 2665015099376290722}
   m_Layer: 5
   m_Name: CartPref
   m_TagString: Untagged
@@ -575,15 +576,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa7e7d8d4ffdb949a0d486653ae6d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 0
-  TimeCoolDown: 0
-  StaminaNeeds: 0
   CartPref: {fileID: 0}
   AttackImage: {fileID: 1767711816866739500}
   AttackDamageText: {fileID: 1767711817212308777}
   StaminaText: {fileID: 1767711817547719018}
   CartText: {fileID: 1767711817294596217}
   CoolDownText: {fileID: 116950720124771855}
+--- !u!61 &2665015099376290722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767711818007298531}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.09374905}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 13.189127, y: 17.79402}
+  m_EdgeRadius: 0
 --- !u!1 &1919945213159286289
 GameObject:
   m_ObjectHideFlags: 0
