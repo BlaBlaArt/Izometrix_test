@@ -53,13 +53,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scrits\SpawnerCells_Zone_1.cs" />
+    <Compile Include="Assets\Scrits\ButtonSettingsBattleSceneScript.cs" />
     <Compile Include="Assets\Scrits\GameController.cs" />
     <Compile Include="Assets\Scrits\SpawnerCellsScript_Zone_0.cs" />
     <Compile Include="Assets\Scrits\PlayerController.cs" />
     <Compile Include="Assets\Scrits\ButtonSettings.cs" />
     <Compile Include="Assets\Scrits\CameraControllerScript.cs" />
     <Compile Include="Assets\Scrits\CellScript.cs" />
-    <Compile Include="Assets\Scrits\ButtonSettingsBattleSceneScript.cs" />
+    <Compile Include="Assets\Scrits\AttackCardsConstruktor.cs" />
+    <Compile Include="Assets\Scrits\BattleControler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
